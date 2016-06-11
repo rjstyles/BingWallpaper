@@ -5,7 +5,7 @@ import json
 import requests
 import urllib.request
 
-time.sleep(5)
+time.sleep(5) # this line can be omitted!
 URL = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1"
 try:
     image_data = json.loads(requests.get(URL).text)
