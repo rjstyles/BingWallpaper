@@ -1,11 +1,9 @@
 import re
 import os
-import time
 import json
 import requests
 import urllib.request
 
-time.sleep(5)
 
 URL = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1"
 
