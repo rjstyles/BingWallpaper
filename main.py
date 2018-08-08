@@ -1,11 +1,9 @@
 import re
 import os
-import time
 import json
 import requests
 import urllib.request
 
-time.sleep(5)
 
 URL = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1"
 
@@ -15,9 +13,18 @@ try:
     
     # url for better quality image
     image_download_url = 'http://www.bing.com/hpwp/' + image_data['images'][0]['hsh']
+    #'_EN' needs to be changed depending on country
     image_name = image_url[re.search("rb/", image_url).end():re.search('_EN', image_url).start()] + '.jpg'
     
-    file_path = os.environ['HOME'] + '/Pictures/Bing_Pic_of_the_Day/' + image_name
+    
+    dir_path = os.environ['HOME'] + '/Pictures/Bing_Pic_of_the_Day/' 
+    
+    #check if the directory exists and create it otherwise
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+    
+    file_path = dir_path + image_name
+    
     if os.path.exists(file_path) is False:
         try:
             # try downloading by first url(better quality)
